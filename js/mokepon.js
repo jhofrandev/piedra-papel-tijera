@@ -61,22 +61,27 @@ const ataqueTierra = () => {
 }
 
 const crearMensaje = (resultado) => {
-    let sectionMensaje = document.getElementById('mensajes')
+    let sectionMensaje = document.getElementById('resultado')
+    let ataqueDelJugador = document.getElementById('ataque-del-jugador')
+    let ataqueDelEnemigo = document.getElementById('ataque-del-enemigo')
 
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = `Tu mascota ataco con ${ataqueJugador}, la mascota del enemigo ataco con ${ataqueEnemigo} - ${resultado}`
+    let nuevoAtaqueJugador = document.createElement('p')
+    let nuevoAtaqueEnemigo = document.createElement('p')
 
-    sectionMensaje.appendChild(parrafo)
+    sectionMensaje.innerHTML = resultado
+    nuevoAtaqueJugador.innerHTML = ataqueJugador
+    nuevoAtaqueEnemigo.innerHTML = ataqueEnemigo
+
+    ataqueDelJugador.appendChild(nuevoAtaqueJugador)
+    ataqueDelEnemigo.appendChild(nuevoAtaqueEnemigo)
 }
 
 const crearMensajeFinal = (resultadoFinal) => {
     let botonReiniciar = document.getElementById('boton-reiniciar')
-    let sectionMensaje = document.getElementById('mensajes')
+    let sectionMensaje = document.getElementById('resultado')
 
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = resultadoFinal
+    sectionMensaje.innerHTML = resultadoFinal
 
-    sectionMensaje.appendChild(parrafo)
 
     let botonFuego = document.getElementById('boton-fuego')
     botonFuego.disabled = true
@@ -90,9 +95,9 @@ const crearMensajeFinal = (resultadoFinal) => {
 
 const revisarVidas = () => {
     if(vidasEnemigo == 0) {
-        crearMensajeFinal('GANASTE')
+        crearMensajeFinal('Felicitaciones, GANASTE')
     } else if(vidasJugador == 0) {
-        crearMensajeFinal('PERDISTE')
+        crearMensajeFinal('Lo siento, PERDISTE')
     }
 }
 
